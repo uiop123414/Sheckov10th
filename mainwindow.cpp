@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "chooseform.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui_CF = new ChooseForm();
 
     //иницилизация кнопок
     ShowButton = new QPushButton(this);
@@ -40,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(AnimateButton,SIGNAL(clicked()),this,SLOT(AnimateSlot()));
     QObject::connect(ShowButton,SIGNAL(clicked()),this,SLOT(ShowSlot()));
     //Переход между окнами
-    //QObject::connect(ui_IF,SIGNAL(firstWindow(const QString &)),this,SLOT(Set_str(const QString &)));
+    QObject::connect(ui_CF,SIGNAL(firstWindow(const int &,const bool &)),this,SLOT(Set_params(const int &,const bool &)));
 
 
 }
@@ -50,11 +52,9 @@ void MainWindow::ExitSlot(){
 }
 
 void MainWindow::ChooseSlot(){
+    ui_CF->show();
+    this->close();
 
-    QMessageBox msgBox;
-    msgBox.setWindowTitle("Подсчет");
-
-    msgBox.exec();
 
 }
 
@@ -71,7 +71,11 @@ void MainWindow::AnimateSlot(){
 void MainWindow::ShowSlot(){
 
 }
-
+void  MainWindow::Set_params(const int & _speed,const bool & _motion){
+    this->show();
+    speed = _speed;
+    motion = _motion;
+}
 
 
 MainWindow::~MainWindow()

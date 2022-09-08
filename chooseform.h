@@ -10,8 +10,7 @@
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
-
-
+#include <QButtonGroup>
 #include <QWidget>
 
 namespace Ui {
@@ -32,7 +31,16 @@ private:
     QPushButton *SetButton;
     QRadioButton *UpDownRadio;
     QRadioButton *LeftRightRadio;
+    QButtonGroup RadioGroup;
     QLineEdit *SpeedLine;
+
+    int speed;
+    bool motion;
+private slots:
+    void pressSet();
+signals:
+    void firstWindow(const int &,const bool &);
+
 };
 
 #endif // CHOOSEFORM_H

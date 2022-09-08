@@ -31,9 +31,21 @@ ChooseForm::ChooseForm(QWidget *parent) :
     SetButton->setText(QCoreApplication::translate("MainWindow", "set", nullptr));
     UpDownRadio->setText(QCoreApplication::translate("MainWindow", "Up-Down", nullptr));
     LeftRightRadio->setText(QCoreApplication::translate("MainWindow", "Left-Right", nullptr));
+
+    RadioGroup.addButton(UpDownRadio);
+    RadioGroup.addButton(LeftRightRadio);
+    // Связывание кнопки и слота
+    QObject::connect(SetButton, SIGNAL(clicked()), this, SLOT(pressSet()));
+
 }
 
 ChooseForm::~ChooseForm()
 {
     delete ui;
+}
+
+void ChooseForm::pressSet(){
+
+    emit firstWindow(speed,motion);
+    this->close();
 }

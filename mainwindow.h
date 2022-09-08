@@ -25,11 +25,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    QWidget *ui_CF;
+
     QPushButton *ShowButton;
     QPushButton *ChooseButton;
     QPushButton *StopButton;
     QPushButton *AnimateButton;
     QPushButton *ExitButton;
+
     float speed;
     bool motion;//True - Up-Down; False - Left-Right
 
@@ -39,6 +42,7 @@ public slots:
     void AnimateSlot();
     void StopSlot();
     void ShowSlot();
+    void Set_params(const int &,const bool &);
 
 
 signals:
