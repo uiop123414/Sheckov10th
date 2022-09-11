@@ -31,7 +31,6 @@ private:
     QPushButton *SetButton;
     QRadioButton *UpDownRadio;
     QRadioButton *LeftRightRadio;
-    QButtonGroup RadioGroup;
     QLineEdit *SpeedLine;
 
     int speed;

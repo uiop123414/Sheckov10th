@@ -10,15 +10,18 @@ CONFIG += c++11
 
 SOURCES += \
     chooseform.cpp \
+    drawingw.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     chooseform.h \
+    drawingw.h \
     mainwindow.h
 
 FORMS += \
     chooseform.ui \
+    drawingw.ui \
     mainwindow.ui
 
 # Default rules for deployment.

@@ -8,8 +8,12 @@
 #include <QtWidgets/QWidget>
 #include <QMessageBox>
 #include <QObject>
-
+#include <QtGui/QPainter>
+#include <QtGui/QResizeEvent>
+#include <QtGui/QExposeEvent>
+#include <QtGui/QBackingStore>
 #include <QMainWindow>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,8 +29,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QWidget *ui_CF;
-
+    QWidget *ui_CF; 
+    QLabel *SpeedLabel;
+    QWidget *ui_AN;
     QPushButton *ShowButton;
     QPushButton *ChooseButton;
     QPushButton *StopButton;
@@ -35,6 +40,9 @@ private:
 
     float speed;
     bool motion;//True - Up-Down; False - Left-Right
+
+
+
 
 public slots:
     void ExitSlot();
@@ -47,7 +55,8 @@ public slots:
 
 signals:
     void ExitSignal();
-
+    void AnimateSignal(const int &,const bool &);
+    void StopSignal();
 
 };
 
